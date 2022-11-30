@@ -14,8 +14,7 @@ public class PlayerSpawning : MonoBehaviour
     //public InventoryObject[] inv = new InventoryObject[4];
 
     public Transform[] MenuSpawnPos = new Transform[4];
-    public Transform[] CollectSpawnPos = new Transform[4];
-    public Transform[] MakeSpawnPos = new Transform[4];
+    public Transform[] GameSpawnPos = new Transform[4];
 
     private void Awake()
     {
@@ -40,13 +39,13 @@ public class PlayerSpawning : MonoBehaviour
                 int Index = System.Array.IndexOf(players, go);
 
                 // Different spawns for each scene
-                if (SceneManager.GetActiveScene().name == "Menu")
+                if (SceneManager.GetActiveScene().name == "MainMenu")
                 {
                     go.GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
                     print("calling");
                     go.GetComponent<PlayerInput>().defaultActionMap = "UI";
                 }
-                else if (SceneManager.GetActiveScene().name == "CollectGameSide")
+                else if (SceneManager.GetActiveScene().name == "Game")
                 {
                     print("pizza");
                     go.GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
@@ -71,13 +70,9 @@ public class PlayerSpawning : MonoBehaviour
                 int Index = System.Array.IndexOf(players, go);
 
 
-                if (SceneManager.GetActiveScene().name == "CollectGameSide")
+                if (SceneManager.GetActiveScene().name == "Game")
                 {
-                    go.transform.position = CollectSpawnPos[Index].position;
-                }
-                else if (SceneManager.GetActiveScene().name == "MakeGameSide")
-                {
-                    go.transform.position = MakeSpawnPos[Index].position;
+                    go.transform.position = GameSpawnPos[Index].position;
                 }
             }
         }
