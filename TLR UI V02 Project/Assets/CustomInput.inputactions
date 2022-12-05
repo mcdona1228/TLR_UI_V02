@@ -112,7 +112,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "UnPause",
+                    "name": "TogglePause",
+                    "type": "Button",
+                    "id": "df7aae77-c236-4f11-9781-e50c28a4e637",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ReturnFromSettingsToPause",
                     "type": "Button",
                     "id": "15cef263-9014-4fd5-94d9-4e4a6234a6ef",
                     "expectedControlType": "Button",
@@ -214,33 +223,6 @@
                     "name": "UnReadyUp",
                     "type": "Button",
                     "id": "7661f508-22d8-404a-8292-9dead788c7a8",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "SpinRight",
-                    "type": "Button",
-                    "id": "8b977e5a-0e2c-43b4-94f1-34060aca4adc",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "SpinLeft",
-                    "type": "Button",
-                    "id": "40195f98-7765-4106-8175-e1974897abfb",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "SkipControls",
-                    "type": "Button",
-                    "id": "af35530d-9c9f-45fb-979b-207972a98ea6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -530,7 +512,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UnPause",
+                    "action": "ReturnFromSettingsToPause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -563,6 +545,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Touch",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "58a85c9a-14b4-4178-8c93-7033a6867647",
+                    "path": "<VirtualMouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Point",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -607,6 +600,28 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4fee91f-d354-457d-b8a3-8b62f250285a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "354b4263-32ed-4224-850e-7001375d671e",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -712,34 +727,197 @@
                 },
                 {
                     "name": "",
-                    "id": "8e1844fe-fea3-4605-8664-166489a5381b",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "Hold",
+                    "id": "61eca5ce-aa2a-4b8e-b9c9-17a751465980",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "SpinRight",
+                    "groups": "",
+                    "action": "TogglePause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Painting",
+            "id": "3a486d01-33fd-458e-b3f8-1192a375b0d6",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "324ec047-29d5-4986-86aa-588b4e00a328",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ReturnFromSettingsToPause",
+                    "type": "Button",
+                    "id": "c38748a0-e844-467b-949e-2a13197dee3b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Click",
+                    "type": "PassThrough",
+                    "id": "a5e45c70-0e2f-45d5-9ef7-ac19c35bd00a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Point",
+                    "type": "PassThrough",
+                    "id": "7bfadfe6-f532-47e0-a0d9-fa2db8970228",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MoveCursor",
+                    "type": "Value",
+                    "id": "7e520398-0da5-4d66-b71a-431e534f0cb4",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c03278d6-93d6-4801-bc99-18f88bfc6a4a",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "47eb54bd-6903-4fea-94dc-0f85c5b7b574",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "Hold",
+                    "id": "3247bffa-7049-4abf-a4e8-c6998abb9184",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "SpinLeft",
+                    "groups": "",
+                    "action": "MoveCursor",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "c7edf43d-d016-4dad-b1c3-b688eb6133c9",
-                    "path": "<Gamepad>/select",
-                    "interactions": "Press",
+                    "id": "b1b47784-2d79-4011-97a2-12b463667019",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b3e6a9c-3708-428d-89ea-1c62576543cd",
+                    "path": "<Pen>/tip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7ce7e4af-3d06-47ea-a8d4-688edf452dfb",
+                    "path": "<Touchscreen>/touch*/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5afa8f05-ed1e-4c0f-b818-9ed3140c4178",
+                    "path": "<XRController>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2cc88e1-1cd2-41da-b2db-12efa894bcd3",
+                    "path": "<VirtualMouse>/leftButton",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "SkipControls",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4636ac23-c183-4a55-9692-5d5de3872047",
+                    "path": "<VirtualMouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33141bf8-dbc7-4a0d-b0be-668a21c29b4d",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6afabd8-8bd8-43bf-918a-72afc7b64036",
+                    "path": "<Pen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d56cc1b0-b885-416f-b52e-f31c353cc41a",
+                    "path": "<Touchscreen>/touch*/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "59a9a295-2525-44df-bed7-645eaeb6b372",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ReturnFromSettingsToPause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -770,6 +948,11 @@
                 {
                     "devicePath": "<Gamepad>",
                     "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<VirtualMouse>",
+                    "isOptional": true,
                     "isOR": false
                 }
             ]

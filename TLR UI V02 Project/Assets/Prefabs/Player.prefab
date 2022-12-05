@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 5537959582643614623}
   - component: {fileID: 7654680919575942263}
   - component: {fileID: 8026610227839956736}
+  - component: {fileID: -8613249876382442161}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -189,6 +190,8 @@ MonoBehaviour:
   playerInput: {fileID: 8026610227839956736}
   pauseGameMenu: {fileID: 0}
   settingsMenu: {fileID: 0}
+  mainMenu: {fileID: 0}
+  paintingMenu: {fileID: 0}
 --- !u!114 &8026610227839956736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +281,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7654680919575942263}
         m_TargetAssemblyTypeName: PauseGameMenu, Assembly-CSharp
-        m_MethodName: OnUnPause
+        m_MethodName: ReturnFromMenuToPrevious
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -335,22 +338,101 @@ MonoBehaviour:
     m_ActionId: 7661f508-22d8-404a-8292-9dead788c7a8
     m_ActionName: UI/UnReadyUp[/DualShock4GamepadHID/buttonEast,/DualShock4GamepadHID1/buttonEast]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 8b977e5a-0e2c-43b4-94f1-34060aca4adc
-    m_ActionName: UI/SpinRight[/DualShock4GamepadHID/rightTrigger,/DualShock4GamepadHID1/rightTrigger]
+      m_Calls:
+      - m_Target: {fileID: 7654680919575942263}
+        m_TargetAssemblyTypeName: PauseGameMenu, Assembly-CSharp
+        m_MethodName: TogglePause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: df7aae77-c236-4f11-9781-e50c28a4e637
+    m_ActionName: UI/TogglePause[/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8613249876382442161}
+        m_TargetAssemblyTypeName: PlayerPainting, Assembly-CSharp
+        m_MethodName: OnSelect
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 324ec047-29d5-4986-86aa-588b4e00a328
+    m_ActionName: Painting/Select[/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8613249876382442161}
+        m_TargetAssemblyTypeName: PlayerPainting, Assembly-CSharp
+        m_MethodName: OnMoveCursor
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7e520398-0da5-4d66-b71a-431e534f0cb4
+    m_ActionName: Painting/MoveCursor[/XInputControllerWindows/leftStick]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 40195f98-7765-4106-8175-e1974897abfb
-    m_ActionName: UI/SpinLeft[/DualShock4GamepadHID/leftTrigger,/DualShock4GamepadHID1/leftTrigger]
+    m_ActionId: a5e45c70-0e2f-45d5-9ef7-ac19c35bd00a
+    m_ActionName: Painting/Click[/Mouse/leftButton,/VirtualMouse/leftButton,/VirtualMouse1/leftButton,/VirtualMouse2/leftButton,/VirtualMouse3/leftButton,/VirtualMouse4/leftButton,/VirtualMouse5/leftButton]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: af35530d-9c9f-45fb-979b-207972a98ea6
-    m_ActionName: UI/SkipControls[/DualShock4GamepadHID/select,/DualShock4GamepadHID1/select]
+    m_ActionId: 7bfadfe6-f532-47e0-a0d9-fa2db8970228
+    m_ActionName: Painting/Point[/Mouse/position,/VirtualMouse/position,/VirtualMouse1/position,/VirtualMouse2/position,/VirtualMouse3/position,/VirtualMouse4/position,/VirtualMouse5/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7654680919575942263}
+        m_TargetAssemblyTypeName: PauseGameMenu, Assembly-CSharp
+        m_MethodName: ReturnFromMenuToPrevious
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c38748a0-e844-467b-949e-2a13197dee3b
+    m_ActionName: Painting/ReturnFromSettingsToPause[/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-8613249876382442161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792463616984774739}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa6096a742b668488f4d045312cc87f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  painting: {fileID: 0}
+  cursor: {fileID: 0}
+  capsule: {fileID: 0}
+  cursorTransform: {fileID: 0}
+  canvasTransform: {fileID: 0}
+  cursorSpeed: 500
+  padding: 35
 --- !u!1 &7792463617814362491
 GameObject:
   m_ObjectHideFlags: 0

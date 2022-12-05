@@ -26,6 +26,7 @@ public class PlayerInputMessager : MonoBehaviour
         print("death");
         FindObjectOfType<PlayerSpawning>().players[PlayerInputManager.instance.playerCount - 1] = player.gameObject;
         FindObjectOfType<PlayerSpawning>().SetInitialPlayerValues();
+        FindObjectOfType<PauseHunter>().PauseHunt();
 
     }
 
