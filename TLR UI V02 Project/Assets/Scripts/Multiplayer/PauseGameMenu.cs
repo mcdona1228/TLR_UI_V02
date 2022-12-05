@@ -38,20 +38,48 @@ public class PauseGameMenu : MonoBehaviour
 
                 EventSystem.current.SetSelectedGameObject(backToMain ? mainFirstBtn : settingsFirstBtn);
             }
+
             if(pauseGameMenu != null)
             {
                 print("Toggle Pause");
                 bool newPauseMenuState = !pauseGameMenu.activeSelf;
+                print(newPauseMenuState);
                 pauseGameMenu.SetActive(newPauseMenuState);
-                Time.timeScale = newPauseMenuState ? 0 : 1;
-                InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInFixedUpdate;
+                //Time.timeScale = newPauseMenuState ? 0 : 1;
+
                 if (newPauseMenuState)
                 {
                     Debug.Log("Game Paused");
+                    foreach(GameObject go in PlayerSpawning.instance.players)
+                    {
+                        if(go != null)
+                        {
+                            go.GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
+                            go.GetComponent<PlayerInput>().defaultActionMap = "UI";
+                        }
+                        
+
+                    }
+                    GetFirstBtns();
+
+                    EventSystem.current.SetSelectedGameObject(pauseFirstBtn);
+                    pauseFirstBtn.GetComponent<Button>().Select();
+                    InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInFixedUpdate;
+
                 }
                 else
                 {
                     Debug.Log("Game Resumed");
+                    foreach (GameObject go in PlayerSpawning.instance.players)
+                    {
+                        if (go != null)
+                        {
+                            go.GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+                            go.GetComponent<PlayerInput>().defaultActionMap = "Player";
+                        }
+
+                    }
+                    InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInFixedUpdate;
                 }
 
                 //if (!pauseGameMenu.activeInHierarchy)
@@ -121,7 +149,13 @@ public class PauseGameMenu : MonoBehaviour
     {
         if(pauseGameMenu != null)
         {
-
+            foreach (Button go in Resources.FindObjectsOfTypeAll(typeof(Button)) as Button[])
+            {
+                if (go.name == "Continue")
+                {
+                    pauseFirstBtn = go.gameObject;
+                }
+            }
         }
         if(settingsMenu != null)
         {

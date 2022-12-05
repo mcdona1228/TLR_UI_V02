@@ -60,6 +60,7 @@ public class PlayerSpawning : MonoBehaviour
                     print("pizza");
                     go.GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
                     go.GetComponent<PlayerInput>().defaultActionMap = "Player";
+                    go.GetComponent<PlayerPainting>().enabled = false;
                 }
                 else if (SceneManager.GetActiveScene().name == "Credits")
                 {

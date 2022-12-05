@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 8646300595885555961}
   - component: {fileID: 6411201302772639483}
   - component: {fileID: 5537959582643614623}
-  - component: {fileID: 7654680919575942263}
   - component: {fileID: 8026610227839956736}
   - component: {fileID: -8613249876382442161}
+  - component: {fileID: 4124210216572618317}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -174,24 +174,6 @@ MonoBehaviour:
     m_Bits: 256
   lastLook: {x: 0, y: 0, z: 0}
   movementInput: {x: 0, y: 0}
---- !u!114 &7654680919575942263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7792463616984774739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dc9d3c2f00e3694595849d0cbf786e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPaused: 0
-  playerInput: {fileID: 8026610227839956736}
-  pauseGameMenu: {fileID: 0}
-  settingsMenu: {fileID: 0}
-  mainMenu: {fileID: 0}
-  paintingMenu: {fileID: 0}
 --- !u!114 &8026610227839956736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,9 +221,9 @@ MonoBehaviour:
     m_ActionName: Player/Move[/DualShock4GamepadHID/leftStick,/DualShock4GamepadHID1/leftStick]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7654680919575942263}
+      - m_Target: {fileID: 4124210216572618317}
         m_TargetAssemblyTypeName: PauseGameMenu, Assembly-CSharp
-        m_MethodName: OnPause
+        m_MethodName: TogglePause
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -279,7 +261,7 @@ MonoBehaviour:
     m_ActionName: UI/Submit[/DualShock4GamepadHID/buttonSouth,/DualShock4GamepadHID1/buttonSouth]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7654680919575942263}
+      - m_Target: {fileID: 4124210216572618317}
         m_TargetAssemblyTypeName: PauseGameMenu, Assembly-CSharp
         m_MethodName: ReturnFromMenuToPrevious
         m_Mode: 0
@@ -339,7 +321,7 @@ MonoBehaviour:
     m_ActionName: UI/UnReadyUp[/DualShock4GamepadHID/buttonEast,/DualShock4GamepadHID1/buttonEast]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7654680919575942263}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseGameMenu, Assembly-CSharp
         m_MethodName: TogglePause
         m_Mode: 0
@@ -395,7 +377,7 @@ MonoBehaviour:
     m_ActionName: Painting/Point[/Mouse/position,/VirtualMouse/position,/VirtualMouse1/position,/VirtualMouse2/position,/VirtualMouse3/position,/VirtualMouse4/position,/VirtualMouse5/position]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7654680919575942263}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseGameMenu, Assembly-CSharp
         m_MethodName: ReturnFromMenuToPrevious
         m_Mode: 0
@@ -427,12 +409,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   painting: {fileID: 0}
-  cursor: {fileID: 0}
-  capsule: {fileID: 0}
   cursorTransform: {fileID: 0}
   canvasTransform: {fileID: 0}
+  cursor: {fileID: 0}
+  tex: {fileID: 0}
+  radiusSlider: {fileID: 0}
   cursorSpeed: 500
-  padding: 35
+  padding: 6
+  radius: 10
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  blueColor: {r: 0, g: 0, b: 1, a: 1}
+  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  currColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &4124210216572618317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792463616984774739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc9d3c2f00e3694595849d0cbf786e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPaused: 0
+  playerInput: {fileID: 8026610227839956736}
+  pauseGameMenu: {fileID: 0}
+  settingsMenu: {fileID: 0}
+  mainMenu: {fileID: 0}
+  paintingMenu: {fileID: 0}
 --- !u!1 &7792463617814362491
 GameObject:
   m_ObjectHideFlags: 0
