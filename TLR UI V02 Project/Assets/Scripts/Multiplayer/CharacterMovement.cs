@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class CharacterMovement : MonoBehaviour
 {
     public Text displayInventory;
     private PlayerControls playerInput;
     public GameObject body;
+    public bool GameStarted;
 
     [SerializeField]
     private float playerSpeed = 2.0f;
@@ -28,11 +30,36 @@ public class CharacterMovement : MonoBehaviour
     public Vector3 lastLook;
     public Vector2 movementInput;
 
+    //Assign Robot info UI
+    public GameObject robotInfo;
+
+    //Inventory on/off
+    public GameObject inventory;
+
+    //Whats In Range
+    public bool inRangeMonster;
+    public bool inRangeResource;
+    public bool inRangeCrafting;
+    public bool offerItem;
+
+    //Items in range
+    public GameObject monster_obj;
+    public GameObject resource_obj;
+    public GameObject crafting_obj;
+    public GameObject item_obj;
+
+    //Sliders - health
+    public Slider monsterSlider;
+    public Slider resourceSlider;
+
+    //Crafting
+    public GameObject craftHelp;
+    public GameObject craftTable;
+
     //For pickup
     //public InventoryObject inventory;
     //public Text pickUpText;
     private List<GameObject> itemList = new List<GameObject>();
-    private GameObject pots;
 
     private void Awake()
     {
@@ -45,14 +72,31 @@ public class CharacterMovement : MonoBehaviour
 
     void Start()
     {
+
         //inventory.Container.Clear();
         //pickUpText.gameObject.SetActive(false);
+    }
+
+    public void BeginGame()
+    {
+        if (SceneManager.GetActiveScene().name == "Game")
+        {
+            // Assigning Robot Info
+            int playerIndex = System.Array.IndexOf(PlayerSpawning.instance.players, gameObject) + 1;
+            robotInfo = GameObject.Find("RobotInfo_" + playerIndex);
+
+            // Assign Inventory: For turning off and on inventory
+            inventory = robotInfo.transform.GetChild(0).gameObject;
+            inventory.SetActive(false);
+        }
+        
     }
 
     //player movement
     private void OnEnable()
     {
         playerInput.Enable();
+        BeginGame();
     }
 
     private void OnDisable()
@@ -60,9 +104,56 @@ public class CharacterMovement : MonoBehaviour
         playerInput.Disable();
     }
 
-    public void OnPreviousTypeRobot(InputAction.CallbackContext ctx)
+    public void OnShowInventory(InputAction.CallbackContext ctx)
     {
+        if (ctx.performed)
+        {
+            print(inventory);
+            inventory.SetActive(true);
+        }
+    }
 
+    public void OnTakeAction(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            if (inRangeCrafting)
+            {
+                craftHelp = crafting_obj.transform.GetChild(0).gameObject;
+                //craftTable = crafting_obj.transform.GetChild(1).gameObject;
+                foreach (var item in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
+                {
+                    //print(item.name);
+                    if (item.name.Contains("CraftTable"))
+                    {
+                        //print(item.transform.parent.transform.parent.name);
+                        craftTable = item;
+                    }
+                }
+
+                craftHelp.SetActive(false);
+                craftTable.SetActive(true);
+
+            }
+            else if (inRangeMonster)
+            {
+                if (GameObject.FindGameObjectWithTag ("MonsterEncounter"))
+                {
+                    monsterSlider = (Slider)FindObjectOfType(typeof(Slider));
+                }
+                
+                monsterSlider.value -= monsterSlider.value;
+            }
+            else if (inRangeResource)
+            {
+                resourceSlider = (Slider)FindObjectOfType(typeof(Slider));
+                resourceSlider.value -= resourceSlider.value;
+            }
+            else if (offerItem)
+            {
+                print("pick up item");
+            }
+        }
     }
 
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
@@ -74,40 +165,7 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    public void OnPickUp(InputAction.CallbackContext ctx)
-    {
-        if (ctx.performed)
-        {
-            /*
-            foreach (GameObject obj in itemList)
-            {
-                //var item = obj.GetComponent<Item>();
-                if (item)
-                {
-                    //inventory.AddItem(item.item, 1);
-                    Destroy(obj.gameObject);
-                }
-            }
-            itemList.Clear();
 
-            
-            if (inPotRange)
-            {
-                var potInventory = pots.GetComponent<Pots>();
-                if (inventory.IfEmpty())
-                {
-                    //potInventory.PlayAnimation();
-                }
-                while (inventory.IfEmpty())
-                {
-                    var slot = inventory.RemoveItem();
-                    potInventory.inventory.AddItem(slot.item, slot.amount);
-                }
-                potInventory.PlayAnimation();
-            }
-            */
-        }
-    }
     //check if player on ground
     private bool IsGrounded()
     {
@@ -116,45 +174,53 @@ public class CharacterMovement : MonoBehaviour
         return grounded;
     }
 
-    //Pick up functions
-    public void OnTriggerStay(Collider collision)
-    {
-        //pickUpText.gameObject.SetActive(true);
-    }
-
-    /*
+    
     public void OnTriggerExit(Collider collision)
     {
-        //pickUpText.gameObject.SetActive(false);
-        if (collision.GetComponent<Collider>().tag == "Item")
+        if (collision.GetComponent<Collider>().tag == "TowerCraftingEncounter")
         {
-            itemList.Remove(collision.gameObject);
+            inRangeCrafting = false;
         }
-        else if (collision.GetComponent<Collider>().tag == "Pot")
+        else if (collision.GetComponent<Collider>().tag == "MonsterEncounter")
         {
-            pots = null;
-            inPotRange = false;
+            inRangeMonster = false;
+        }
+        else if (collision.GetComponent<Collider>().tag == "ResourceEncounter")
+        {
+            inRangeResource = false;
+        }
+        else if (collision.GetComponent<Collider>().tag == "ResourceItem")
+        {
+            offerItem = false;
         }
     }
     
     public void OnTriggerEnter(Collider collision)
     {
-        if (collision.GetComponent<Collider>().tag == "Item")
+        if (collision.GetComponent<Collider>().tag == "TowerCraftingEncounter")
         {
-            itemList.Add(collision.gameObject);
+            crafting_obj = collision.gameObject;
+            inRangeCrafting = true;
         }
-        else if (collision.GetComponent<Collider>().tag == "Pot")
+        else if (collision.GetComponent<Collider>().tag == "MonsterEncounter")
         {
-            pots = collision.gameObject;
-            inPotRange = true;
+            monster_obj = collision.gameObject;
+            inRangeMonster = true;
+        }
+        else if (collision.GetComponent<Collider>().tag == "ResourceEncounter")
+        {
+            resource_obj = collision.gameObject;
+            inRangeResource = true;
+        }
+        else if (collision.GetComponent<Collider>().tag == "ResourceItem")
+        {
+            item_obj = collision.gameObject;
+            offerItem = true;
+            //itemList.Add(collision.gameObject);
         }
 
     }
-    */
-    private void OnApplicationQuit()
-    {
-        //inventory.Container.Clear();
-    }
+
 
     //update
     private void Update()
@@ -176,5 +242,6 @@ public class CharacterMovement : MonoBehaviour
             _rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
             doJump = false;
         }
+
     }
 }

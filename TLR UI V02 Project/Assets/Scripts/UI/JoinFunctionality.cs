@@ -38,7 +38,7 @@ public class JoinFunctionality : MonoBehaviour
             foreach (var item in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
             {
                 //print(item.name);
-                if (item.name.Contains("RobotTypes"))
+                if (item.name.Contains("RobotTypes_" + playerIndex))
                 {
                     print(item.transform.parent.transform.parent.name);
                     
@@ -46,7 +46,7 @@ public class JoinFunctionality : MonoBehaviour
                     RobotTypes = item;
                 }
             }
-            RobotTypes.SetActive(false);
+            //RobotTypes.SetActive(false);
 
             JoinGame.SetActive(false);
             RobotTypes.SetActive(true);

@@ -388,6 +388,20 @@ MonoBehaviour:
     m_Bits: 256
   lastLook: {x: 0, y: 0, z: 0}
   movementInput: {x: 0, y: 0}
+  robotInfo: {fileID: 0}
+  inventory: {fileID: 0}
+  inRangeMonster: 0
+  inRangeResource: 0
+  inRangeCrafting: 0
+  offerItem: 0
+  monster_obj: {fileID: 0}
+  resource_obj: {fileID: 0}
+  crafting_obj: {fileID: 0}
+  item_obj: {fileID: 0}
+  monsterSlider: {fileID: 0}
+  resourceSlider: {fileID: 0}
+  craftHelp: {fileID: 0}
+  craftTable: {fileID: 0}
 --- !u!114 &8026610227839956736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,7 +428,19 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5537959582643614623}
+        m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
+        m_MethodName: OnTakeAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: cb5fa6f4-ddc7-4b32-b917-3668c7511d89
     m_ActionName: Player/PickUp[/DualShock4GamepadHID/buttonWest,/DualShock4GamepadHID1/buttonWest]
   - m_PersistentCalls:
@@ -633,6 +659,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2198a9ac-c175-45df-a731-aa2279b048e8
     m_ActionName: UI/Join[/DualShock4GamepadHID/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5537959582643614623}
+        m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
+        m_MethodName: OnShowInventory
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 33b22bec-9904-4323-9d9e-90de5c864c31
+    m_ActionName: Player/ShowInventory[/DualShock4GamepadHID/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: UI
@@ -696,7 +738,7 @@ MonoBehaviour:
   personalityTypeTexts: []
   index: 0
   JoinGame: {fileID: 0}
-  RoboTypes: {fileID: 0}
+  RobotTypes: {fileID: 0}
 --- !u!1 &7792463617814362491
 GameObject:
   m_ObjectHideFlags: 0

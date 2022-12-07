@@ -10,6 +10,7 @@ TagManager:
   - ResourceEncounter
   - ResourceItem
   - RobotInfo
+  - Slider
   layers:
   - Default
   - TransparentFX
