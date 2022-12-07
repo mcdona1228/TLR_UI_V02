@@ -50,7 +50,7 @@ public class PauseHunter : MonoBehaviour
             
         }
 
-        if(SceneManager.GetActiveScene().name != "MainMenu")
+        if(SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "Join")
         {
             gameObject.SetActive(false);
         }

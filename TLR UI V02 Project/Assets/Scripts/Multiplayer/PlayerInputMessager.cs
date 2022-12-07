@@ -27,7 +27,7 @@ public class PlayerInputMessager : MonoBehaviour
         FindObjectOfType<PlayerSpawning>().players[PlayerInputManager.instance.playerCount - 1] = player.gameObject;
         FindObjectOfType<PlayerSpawning>().SetInitialPlayerValues();
         FindObjectOfType<PauseHunter>().PauseHunt();
-
+        player.GetComponent<JoinFunctionality>().OnJoin();
     }
 
     private void OnPlayerLeft(PlayerInput player)

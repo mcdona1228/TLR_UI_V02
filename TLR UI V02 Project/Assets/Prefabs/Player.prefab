@@ -310,6 +310,7 @@ GameObject:
   - component: {fileID: 8026610227839956736}
   - component: {fileID: -8613249876382442161}
   - component: {fileID: 4124210216572618317}
+  - component: {fileID: 3041462504563805829}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -517,11 +518,35 @@ MonoBehaviour:
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3041462504563805829}
+        m_TargetAssemblyTypeName: JoinFunctionality, Assembly-CSharp
+        m_MethodName: OnPreviousTypeRobo
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 002abadf-97b0-4e24-92c1-1b3d4528dffe
     m_ActionName: UI/PreviousHat[/DualShock4GamepadHID/leftShoulder,/DualShock4GamepadHID1/leftShoulder]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3041462504563805829}
+        m_TargetAssemblyTypeName: JoinFunctionality, Assembly-CSharp
+        m_MethodName: OnNextTypeRobo
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 81d6203a-d5da-4fd3-a287-7231221bd485
     m_ActionName: UI/NextHat[/DualShock4GamepadHID/rightShoulder,/DualShock4GamepadHID1/rightShoulder]
   - m_PersistentCalls:
@@ -534,7 +559,7 @@ MonoBehaviour:
     m_ActionName: UI/UnReadyUp[/DualShock4GamepadHID/buttonEast,/DualShock4GamepadHID1/buttonEast]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4124210216572618317}
         m_TargetAssemblyTypeName: PauseGameMenu, Assembly-CSharp
         m_MethodName: TogglePause
         m_Mode: 0
@@ -589,10 +614,14 @@ MonoBehaviour:
     m_ActionId: 7bfadfe6-f532-47e0-a0d9-fa2db8970228
     m_ActionName: Painting/Point[/Mouse/position,/VirtualMouse/position,/VirtualMouse1/position,/VirtualMouse2/position,/VirtualMouse3/position,/VirtualMouse4/position,/VirtualMouse5/position]
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c38748a0-e844-467b-949e-2a13197dee3b
+    m_ActionName: Painting/ReturnFromSettingsToPause[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PauseGameMenu, Assembly-CSharp
-        m_MethodName: ReturnFromMenuToPrevious
+      - m_Target: {fileID: 3041462504563805829}
+        m_TargetAssemblyTypeName: JoinFunctionality, Assembly-CSharp
+        m_MethodName: OnJoin
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -602,8 +631,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: c38748a0-e844-467b-949e-2a13197dee3b
-    m_ActionName: Painting/ReturnFromSettingsToPause[/XInputControllerWindows/buttonEast]
+    m_ActionId: 2198a9ac-c175-45df-a731-aa2279b048e8
+    m_ActionName: UI/Join[/DualShock4GamepadHID/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: UI
@@ -652,6 +681,22 @@ MonoBehaviour:
   settingsMenu: {fileID: 0}
   mainMenu: {fileID: 0}
   paintingMenu: {fileID: 0}
+--- !u!114 &3041462504563805829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792463616984774739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1495d424120f1e648971a9ae56b33ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  personalityTypeTexts: []
+  index: 0
+  JoinGame: {fileID: 0}
+  RoboTypes: {fileID: 0}
 --- !u!1 &7792463617814362491
 GameObject:
   m_ObjectHideFlags: 0

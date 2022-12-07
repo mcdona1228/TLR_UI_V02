@@ -193,7 +193,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PreviousHat",
+                    "name": "PreviousTypeRobo",
                     "type": "Button",
                     "id": "002abadf-97b0-4e24-92c1-1b3d4528dffe",
                     "expectedControlType": "Button",
@@ -202,7 +202,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "NextHat",
+                    "name": "NextTypeRobo",
                     "type": "Button",
                     "id": "81d6203a-d5da-4fd3-a287-7231221bd485",
                     "expectedControlType": "Button",
@@ -227,6 +227,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Join",
+                    "type": "Button",
+                    "id": "2198a9ac-c175-45df-a731-aa2279b048e8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -684,22 +693,22 @@
                 {
                     "name": "",
                     "id": "62208550-e639-4a22-9259-9cc8990dee0a",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/dpad/left",
                     "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "PreviousHat",
+                    "action": "PreviousTypeRobo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "3dd7eedd-0184-4c2f-b3ef-a1429cc7de71",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/dpad/right",
                     "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "NextHat",
+                    "action": "NextTypeRobo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -733,6 +742,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "TogglePause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2b535ef-bb56-4b4d-8fa4-b8c1675920e4",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Join",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

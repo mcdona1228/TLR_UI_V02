@@ -60,6 +60,11 @@ public class CharacterMovement : MonoBehaviour
         playerInput.Disable();
     }
 
+    public void OnPreviousTypeRobot(InputAction.CallbackContext ctx)
+    {
+
+    }
+
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
     public void OnJump(InputAction.CallbackContext ctx)
     {

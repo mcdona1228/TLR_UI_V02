@@ -32,6 +32,8 @@ public class PlayerSpawning : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+
+
     }
 
     public void ChangePlayerInput()
@@ -106,25 +108,7 @@ public class PlayerSpawning : MonoBehaviour
             }
 
             //in future change to switch
-            foreach (Transform goih in hoverInfo)
-            {
-                if (go == null)
-                {
-                    goih.GetChild(1).gameObject.SetActive(true);
-                    goih.GetChild(2).gameObject.SetActive(false);
 
-                }
-                else if (go != null && !lockedIn)
-                {
-                    goih.GetChild(1).gameObject.SetActive(false);
-                    goih.GetChild(2).gameObject.SetActive(true);
-
-                }
-                else if (lockedIn)
-                {
-                    goih.GetChild(0).gameObject.SetActive(false);
-                }
-            }
         }
         //FindObjectOfType<PauseHunter>().pauseHunt();
     }
