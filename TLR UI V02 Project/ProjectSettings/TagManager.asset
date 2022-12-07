@@ -11,6 +11,7 @@ TagManager:
   - ResourceItem
   - RobotInfo
   - Slider
+  - BoarderBoundry
   layers:
   - Default
   - TransparentFX

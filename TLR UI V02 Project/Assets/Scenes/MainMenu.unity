@@ -4376,7 +4376,7 @@ GameObject:
   - component: {fileID: 1427395892}
   - component: {fileID: 1427395891}
   m_Layer: 5
-  m_Name: PaintCursor3
+  m_Name: PaintCursor2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

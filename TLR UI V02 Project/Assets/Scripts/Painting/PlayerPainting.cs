@@ -16,7 +16,7 @@ public class PlayerPainting : MonoBehaviour
     public Texture2D tex;
     public Slider radiusSlider;
 
-    private Mouse virtualMouse;
+    public Mouse virtualMouse;
     private Vector2 virtualMousePos;
     private bool prevMouseState;
     public int cursorSpeed = 500;

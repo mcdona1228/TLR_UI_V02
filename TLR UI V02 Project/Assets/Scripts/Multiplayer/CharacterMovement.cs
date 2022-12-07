@@ -58,8 +58,13 @@ public class CharacterMovement : MonoBehaviour
     public GameObject craftTablePanel;
     public GameObject craftTableText;
 
+    public GameObject craftingOptionsIndex;
     public List<TextMeshProUGUI> craftingTypeTexts;
     public int index;
+
+    //Boarders
+    public GameObject HitBoarder;
+    public GameObject MonsterAttackBoarder;
 
     //For pickup
     //public InventoryObject inventory;
@@ -93,6 +98,20 @@ public class CharacterMovement : MonoBehaviour
             // Assign Inventory: For turning off and on inventory
             inventory = robotInfo.transform.GetChild(0).gameObject;
             inventory.SetActive(false);
+
+            // find boarders
+            foreach (var item in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
+            {
+                if (item.name.Contains("HitBoarder"))
+                {
+                    HitBoarder = item;
+                }
+                else if (item.name.Contains("MonsterAttack"))
+                {
+                    MonsterAttackBoarder = item;
+                }
+
+            }
         }
         
     }
@@ -136,12 +155,22 @@ public class CharacterMovement : MonoBehaviour
                     {
                         craftTablePanel = item;
                     }
+                    else if (item.name.Contains("CraftMeOptions"))
+                    {
+                        craftingOptionsIndex = item;
+                    }
                 }
 
                 craftBTImage.SetActive(false);
                 craftTablePanel.SetActive(true);
                 craftTableText.SetActive(true);
 
+                foreach (var item in craftingOptionsIndex.GetComponentsInChildren<TextMeshProUGUI>())
+                {
+                    craftingTypeTexts.Add(item);
+                    item.gameObject.SetActive(false);
+                }
+                craftingTypeTexts[0].gameObject.SetActive(true);
             }
             else if (inRangeMonster)
             {
@@ -165,8 +194,6 @@ public class CharacterMovement : MonoBehaviour
     {
         if (ctx.performed && inRangeCrafting)
         {
-            // NEEDS to find obj first and have it set active
-
             print("Join arrow");
             craftingTypeTexts[index].gameObject.SetActive(false);
             index = (index + 1) % craftingTypeTexts.Count;
@@ -175,7 +202,7 @@ public class CharacterMovement : MonoBehaviour
     }
     public void OnCraftingPrevious(InputAction.CallbackContext ctx)
     {
-        // needs stuff above
+        
         if (ctx.performed && inRangeCrafting)
         {
             print("Join arrow");
@@ -236,6 +263,8 @@ public class CharacterMovement : MonoBehaviour
         else if (collision.GetComponent<Collider>().tag == "MonsterEncounter")
         {
             inRangeMonster = false;
+            //boarder
+            MonsterAttackBoarder.SetActive(false);
         }
         else if (collision.GetComponent<Collider>().tag == "ResourceEncounter")
         {
@@ -244,6 +273,10 @@ public class CharacterMovement : MonoBehaviour
         else if (collision.GetComponent<Collider>().tag == "ResourceItem")
         {
             offerItem = false;
+        }
+        else if (collision.GetComponent<Collider>().tag == "BoarderBoundry")
+        {
+            HitBoarder.SetActive(false);
         }
     }
     
@@ -256,8 +289,11 @@ public class CharacterMovement : MonoBehaviour
         }
         else if (collision.GetComponent<Collider>().tag == "MonsterEncounter")
         {
+            //for dmg
             monster_obj = collision.gameObject;
             inRangeMonster = true;
+            //boarder
+            MonsterAttackBoarder.SetActive(true);
         }
         else if (collision.GetComponent<Collider>().tag == "ResourceEncounter")
         {
@@ -269,6 +305,10 @@ public class CharacterMovement : MonoBehaviour
             item_obj = collision.gameObject;
             offerItem = true;
             //itemList.Add(collision.gameObject);
+        }
+        else if (collision.GetComponent<Collider>().tag == "BoarderBoundry")
+        {
+            HitBoarder.SetActive(true);
         }
 
     }
