@@ -238,7 +238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7792463616969715566}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.18499994, z: -0.448}
+  m_LocalPosition: {x: 0, y: 0.18499994, z: 0.51}
   m_LocalScale: {x: 1, y: 0.50783, z: 0.4785}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -404,8 +404,11 @@ MonoBehaviour:
   craftBTImage: {fileID: 0}
   craftTablePanel: {fileID: 0}
   craftTableText: {fileID: 0}
+  craftingOptionsIndex: {fileID: 0}
   craftingTypeTexts: []
   index: 0
+  HitBoarder: {fileID: 0}
+  MonsterAttackBoarder: {fileID: 0}
 --- !u!114 &8026610227839956736
 MonoBehaviour:
   m_ObjectHideFlags: 0
