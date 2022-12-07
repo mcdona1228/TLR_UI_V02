@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -55,6 +56,8 @@ public class CharacterMovement : MonoBehaviour
     //Crafting
     public GameObject craftHelp;
     public GameObject craftTable;
+    public List<TextMeshProUGUI> craftingTypeTexts;
+    public int index;
 
     //For pickup
     //public InventoryObject inventory;
@@ -153,6 +156,48 @@ public class CharacterMovement : MonoBehaviour
             {
                 print("pick up item");
             }
+        }
+    }
+
+    // 3 Crafting buttons: 2 arrows to see craftables, 1 go to auto fill items and craft (will have delay and then show up in players inventory)
+    public void OnCraftingNext(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed && inRangeCrafting)
+        {
+            // NEEDS to find obj first and have it set active
+
+            print("Join arrow");
+            craftingTypeTexts[index].gameObject.SetActive(false);
+            index = (index + 1) % craftingTypeTexts.Count;
+            craftingTypeTexts[index].gameObject.SetActive(true);
+        }
+    }
+    public void OnCraftingPrevious(InputAction.CallbackContext ctx)
+    {
+        // needs stuff above
+        if (ctx.performed && inRangeCrafting)
+        {
+            print("Join arrow");
+            craftingTypeTexts[index].gameObject.SetActive(false);
+            if (index == 0)
+            {
+                index = craftingTypeTexts.Count - 1;
+            }
+            else
+            {
+                index -= 1;
+            }
+            craftingTypeTexts[index].gameObject.SetActive(true);
+        }
+    }
+
+    public void OnCraftItem(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed && inRangeCrafting)
+        {
+            // do check
+            // if items in inv and req match then display crafted item and give to player if space if not drop
+            // if no items in inventory match rewuired items red and ERROR
         }
     }
 
