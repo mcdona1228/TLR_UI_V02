@@ -49,6 +49,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CraftingNext",
+                    "type": "Button",
+                    "id": "7e5eac4e-3888-41ac-9320-5f443a185a4d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CraftingPrevious",
+                    "type": "Button",
+                    "id": "4d6d5c3c-2eb0-4b17-8a2a-69a70c9d8d9e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -104,6 +122,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ShowInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5d5db814-5e86-4c2a-b663-6bbd28bdb7d7",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CraftingNext",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8db9c0dc-872f-4c13-939b-c8b7e228d60f",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CraftingPrevious",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -801,6 +841,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "ReturnToMainMenu",
+                    "type": "Button",
+                    "id": "ee0dcde3-545f-4389-afd4-6efea5cb078a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Click",
                     "type": "PassThrough",
                     "id": "a5e45c70-0e2f-45d5-9ef7-ac19c35bd00a",
@@ -958,6 +1007,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ReturnFromSettingsToPause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9da38928-6d8b-465d-ad92-9259691adf50",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ReturnToMainMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

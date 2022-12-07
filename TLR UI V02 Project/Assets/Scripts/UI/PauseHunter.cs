@@ -29,6 +29,10 @@ public class PauseHunter : MonoBehaviour
                 {
                     mainMenu = go;
                 }
+                if (go.name == "MainMenuButtons")
+                {
+                    mainMenu = go;
+                }
             }
         }
         foreach (PauseGameMenu pgm in FindObjectsOfType<PauseGameMenu>())

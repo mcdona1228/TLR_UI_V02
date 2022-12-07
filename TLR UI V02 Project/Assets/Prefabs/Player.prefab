@@ -379,7 +379,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayInventory: {fileID: 0}
   body: {fileID: 7792463618706904399}
-  playerSpeed: 2
+  GameStarted: 0
+  playerSpeed: 5
   jumpHeight: 1
   _rb: {fileID: 6411201302772639483}
   distanceToGround: 0.1
@@ -400,8 +401,11 @@ MonoBehaviour:
   item_obj: {fileID: 0}
   monsterSlider: {fileID: 0}
   resourceSlider: {fileID: 0}
-  craftHelp: {fileID: 0}
-  craftTable: {fileID: 0}
+  craftBTImage: {fileID: 0}
+  craftTablePanel: {fileID: 0}
+  craftTableText: {fileID: 0}
+  craftingTypeTexts: []
+  index: 0
 --- !u!114 &8026610227839956736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +679,42 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 33b22bec-9904-4323-9d9e-90de5c864c31
     m_ActionName: Player/ShowInventory[/DualShock4GamepadHID/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ee0dcde3-545f-4389-afd4-6efea5cb078a
+    m_ActionName: Painting/ReturnToMainMenu[/DualShock4GamepadHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5537959582643614623}
+        m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
+        m_MethodName: OnCraftingNext
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7e5eac4e-3888-41ac-9320-5f443a185a4d
+    m_ActionName: Player/CraftingNext[/DualShock4GamepadHID/dpad/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5537959582643614623}
+        m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
+        m_MethodName: OnCraftingPrevious
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4d6d5c3c-2eb0-4b17-8a2a-69a70c9d8d9e
+    m_ActionName: Player/CraftingPrevious[/DualShock4GamepadHID/dpad/left]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: UI

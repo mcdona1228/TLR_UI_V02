@@ -86,7 +86,7 @@ public class PlayerSpawning : MonoBehaviour
                 if (SceneManager.GetActiveScene().name == "Game")
                 {
                     go.transform.position = GameSpawnPos[Index].position;
-
+                    go.GetComponent<CharacterMovement>().BeginGame();
                     //go.GetComponent<CharacterController>().enabled = true;
                 }
             }
@@ -109,9 +109,7 @@ public class PlayerSpawning : MonoBehaviour
                 
             }
 
-            //in future change to switch
-
         }
-        //FindObjectOfType<PauseHunter>().pauseHunt();
+        FindObjectOfType<PauseHunter>().PauseHunt();
     }
 }

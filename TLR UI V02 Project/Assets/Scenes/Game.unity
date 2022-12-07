@@ -12171,12 +12171,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1277704081}
   m_Layer: 0
-  m_Name: CraftTable
+  m_Name: CraftTableText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1277704081
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12779,7 +12779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1352285050
 Transform:
   m_ObjectHideFlags: 0
@@ -14403,7 +14403,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467920791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.04, y: 0, z: -4.09}
+  m_LocalPosition: {x: -11.11, y: 0, z: -0.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15848,7 +15848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1618674415
 RectTransform:
   m_ObjectHideFlags: 0

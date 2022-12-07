@@ -54,8 +54,10 @@ public class CharacterMovement : MonoBehaviour
     public Slider resourceSlider;
 
     //Crafting
-    public GameObject craftHelp;
-    public GameObject craftTable;
+    public GameObject craftBTImage;
+    public GameObject craftTablePanel;
+    public GameObject craftTableText;
+
     public List<TextMeshProUGUI> craftingTypeTexts;
     public int index;
 
@@ -112,7 +114,7 @@ public class CharacterMovement : MonoBehaviour
         if (ctx.performed)
         {
             print(inventory);
-            inventory.SetActive(true);
+            inventory.SetActive(!inventory.activeSelf);
         }
     }
 
@@ -122,35 +124,34 @@ public class CharacterMovement : MonoBehaviour
         {
             if (inRangeCrafting)
             {
-                craftHelp = crafting_obj.transform.GetChild(0).gameObject;
-                //craftTable = crafting_obj.transform.GetChild(1).gameObject;
+                craftBTImage = crafting_obj.transform.GetChild(0).GetChild(0).gameObject;
+                //craftTablePanel = crafting_obj.transform.GetChild(2).gameObject;
                 foreach (var item in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
                 {
-                    //print(item.name);
-                    if (item.name.Contains("CraftTable"))
+                    if (item.name.Contains("CraftTableText"))
                     {
-                        //print(item.transform.parent.transform.parent.name);
-                        craftTable = item;
+                        craftTableText = item;
+                    }
+                    else if (item.name.Contains("CraftingPanel"))
+                    {
+                        craftTablePanel = item;
                     }
                 }
 
-                craftHelp.SetActive(false);
-                craftTable.SetActive(true);
+                craftBTImage.SetActive(false);
+                craftTablePanel.SetActive(true);
+                craftTableText.SetActive(true);
 
             }
             else if (inRangeMonster)
             {
-                if (GameObject.FindGameObjectWithTag ("MonsterEncounter"))
-                {
-                    monsterSlider = (Slider)FindObjectOfType(typeof(Slider));
-                }
-                
-                monsterSlider.value -= monsterSlider.value;
+                monsterSlider = monster_obj.transform.GetComponentInChildren<Slider>();
+                monsterSlider.value -= 1;
             }
             else if (inRangeResource)
             {
-                resourceSlider = (Slider)FindObjectOfType(typeof(Slider));
-                resourceSlider.value -= resourceSlider.value;
+                resourceSlider = resource_obj.transform.GetComponentInChildren<Slider>();
+                resourceSlider.value -= 1;
             }
             else if (offerItem)
             {
@@ -225,6 +226,12 @@ public class CharacterMovement : MonoBehaviour
         if (collision.GetComponent<Collider>().tag == "TowerCraftingEncounter")
         {
             inRangeCrafting = false;
+            if(craftBTImage != null)
+                craftBTImage.SetActive(true);
+            if (craftTablePanel != null)
+                craftTablePanel.SetActive(false);
+            if (craftTableText != null)
+                craftTableText.SetActive(false);
         }
         else if (collision.GetComponent<Collider>().tag == "MonsterEncounter")
         {
